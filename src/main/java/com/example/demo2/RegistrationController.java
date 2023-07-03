@@ -1,5 +1,6 @@
 package com.example.demo2;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,9 +10,14 @@ import java.util.ResourceBundle;
 import java.util.Stack;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 public class RegistrationController {
 
@@ -86,6 +92,21 @@ public class RegistrationController {
                 pst.setString(1, address_field.getText());
                 pst.setInt(2, value);
                 pst.executeUpdate();
+
+
+                enter.getScene().getWindow().hide();
+
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("authorization.fxml"));
+                fxmlLoader.setRoot(new Pane());
+                try {
+                    fxmlLoader.load();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }Parent root = fxmlLoader.getRoot();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.show();
 
 
             } catch (SQLException | ClassNotFoundException e) {

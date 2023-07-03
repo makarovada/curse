@@ -41,12 +41,19 @@ public class AuthorizationController {
         signUp.setOnAction(actionEvent -> {
             signUp.getScene().getWindow().hide();
 
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/main/resources/com/example/demo2/registration.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("registration.fxml"));
             fxmlLoader.setRoot(new Pane());
+
+            try {
+                fxmlLoader.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
             Parent root = fxmlLoader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-            stage.showAndWait();
+            stage.show();
         });
         enter.setOnAction(actionEvent -> {
             String query = "SELECT member_id, role FROM members WHERE login = ? AND password= ?";
@@ -71,12 +78,18 @@ public class AuthorizationController {
 
 
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/main/resources/com/example/demo2/client_account.fxml"));
+                fxmlLoader.setLocation(getClass().getResource("client_account.fxml"));
                 fxmlLoader.setRoot(new Pane());
+
+                try {
+                    fxmlLoader.load();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
                 Parent root = fxmlLoader.getRoot();
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
-                stage.showAndWait();
+                stage.show();
             }
 
 
