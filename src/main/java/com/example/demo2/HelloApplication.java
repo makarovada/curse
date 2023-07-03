@@ -13,13 +13,21 @@ import java.sql.*;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException, SQLException, ClassNotFoundException {
-        DateBaseHandler db = new DateBaseHandler();
+        DataBaseHandler.getInstance();
+
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("authorization.fxml"));
         fxmlLoader.setRoot(new Pane());
         Parent root = fxmlLoader.load();
-        Scene scene = new Scene(root);
         stage.setTitle("Hello!");
-        stage.setScene(scene);
+        stage.setScene(new Scene(root));
+
+
+        /*
+        Parent root = FXMLLoader.load(getClass().getResource("authorization.fxml"));
+        stage.setTitle("Delivery_center");
+        stage.setScene(new Scene(root));
+
+         */
         stage.show();
 
     }

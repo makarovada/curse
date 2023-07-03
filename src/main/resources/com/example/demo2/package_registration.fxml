@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="603.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo2.AuthorizationController">
+   <children>
+      <Pane prefHeight="54.0" prefWidth="603.0" style="-fx-background-color: #006400;">
+         <children>
+            <Label layoutX="211.0" layoutY="8.0" prefHeight="36.0" prefWidth="185.0" text="Центр доставки &quot;Стэк&quot;" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bodoni MT" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Label layoutX="217.0" layoutY="62.0" prefHeight="36.0" prefWidth="185.0" text="Регистрация посылки" textAlignment="JUSTIFY" wrapText="true">
+         <font>
+            <Font name="Bodoni MT Black" size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="enter" layoutX="195.0" layoutY="333.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="214.0" style="-fx-background-color: #006400;" text="Получить id посылки" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Bodoni MT" size="14.0" />
+         </font>
+      </Button>
+      <TextField fx:id="first_name_field" layoutX="30.0" layoutY="138.0" prefHeight="36.0" prefWidth="262.0" promptText="Фамилия" />
+      <TextField fx:id="second_name_field" layoutX="30.0" layoutY="183.0" prefHeight="36.0" prefWidth="262.0" promptText="Имя" />
+      <TextField fx:id="phone_field" layoutX="30.0" layoutY="228.0" prefHeight="36.0" prefWidth="262.0" promptText="Телефон" />
+      <Label layoutX="103.0" layoutY="98.0" prefHeight="36.0" prefWidth="103.0" text="Получатель" textAlignment="JUSTIFY" wrapText="true">
+         <font>
+            <Font name="Bodoni MT Black" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="403.0" layoutY="98.0" prefHeight="36.0" prefWidth="103.0" text="Посылка" textAlignment="JUSTIFY" wrapText="true">
+         <font>
+            <Font name="Bodoni MT Black" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="weight_field" layoutX="310.0" layoutY="138.0" prefHeight="36.0" prefWidth="262.0" promptText="Вес(в граммах)" />
+      <CheckBox fx:id="urgency" layoutX="312.0" layoutY="193.0" mnemonicParsing="false" text="Срочная посылка" />
+      <Label layoutX="30.0" layoutY="272.0" prefHeight="45.0" prefWidth="262.0" text="Получатель посылки должен быть зарегестрированным пользователем с подтверждённым аккаунтом" textAlignment="JUSTIFY" wrapText="true">
+         <font>
+            <Font name="Bodoni MT Black" size="10.0" />
+         </font>
+      </Label>
+      <Label layoutX="22.0" layoutY="268.0" prefHeight="36.0" prefWidth="8.0" text="*" textAlignment="JUSTIFY" textFill="RED" wrapText="true">
+         <font>
+            <Font name="Bodoni MT Black" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="312.0" layoutY="229.0" prefHeight="36.0" prefWidth="97.0" text="Центр отправки:" textAlignment="JUSTIFY" wrapText="true" />
+      <ChoiceBox layoutX="422.0" layoutY="234.0" prefWidth="150.0" />
+   </children>
+</Pane>
