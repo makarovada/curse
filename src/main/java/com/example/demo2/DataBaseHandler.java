@@ -96,21 +96,46 @@ public class DataBaseHandler {
             Customer.setCust_id(res.getInt(9));
         }
     }
+    public void courier() throws SQLException, ClassNotFoundException {
+        String request = "SELECT first_name, second_name, last_name, " +
+                "phone, login, password, dc_id, courier_id  FROM people JOIN members USING(human_id) JOIN couriers USING(member_id) " +
+                "WHERE member_id="+User.getId();
+        PreparedStatement pst = getInstance().getConnection().prepareStatement(request);
+        ResultSet res = pst.executeQuery();
+        while(res.next()){
+            Courier.setFirst_name(res.getString(1));
+            Courier.setSecond_name(res.getString(2));
+            Courier.setLast_name(res.getString(3));
+            Courier.setPhone(res.getString(4));
+            Courier.setLogin(res.getString(5));
+            Courier.setPassword(res.getInt(6));
+            Courier.setDc_id(res.getInt(7));
+            Courier.setCour_id(res.getInt(8));
+        }
+    }
     public ResultSet client_account_w() throws SQLException, ClassNotFoundException {
         String query = "SELECT package_id, weight, IF(urgency=1, 'Срочная', 'Обычная') AS urg, CONCAT(first_name, ' ', second_name) AS name, phone FROM people JOIN " +
                 "members USING(human_id) " +
                 "JOIN couriers USING(member_id) " +
                 "JOIN packages USING(courier_id) " +
                 "JOIN recipient_cust USING(package_id) " +
-                "WHERE recipient_id=? AND status=0;";
+                "WHERE recipient_id=? AND status=0 ORDER BY packages.package_id";
         PreparedStatement pst = getInstance().getConnection().prepareStatement(query);
         pst.setInt(1, Customer.getCust_id());
+        return pst.executeQuery();
+    }
+    public ResultSet courier_account_table() throws SQLException {
+        String query = "SELECT package_id, weight, IF(urgency=1, 'Срочная', 'Обычная') AS urg, CONCAT(first_name, ' ', second_name) AS name, phone, address FROM " +
+                "people JOIN members USING(human_id) JOIN customers USING(member_id) JOIN recipient_cust ON customer_id=recipient_id JOIN packages USING(package_id) " +
+                "WHERE status!=2 AND courier_id=?";
+        PreparedStatement pst = getConnection().prepareStatement(query);
+        pst.setInt(1, Courier.getCour_id());
         return pst.executeQuery();
     }
     public ResultSet client_account_w1() throws SQLException, ClassNotFoundException {
         String query = "SELECT packages.package_id AS id, weight, IF(urgency=1, 'Срочная', 'Обычная') AS urg, CONCAT(first_name, ' ', second_name) AS name, IF(status=1, 'да', 'нет') AS status1 FROM people JOIN " +
                 "members USING(human_id) JOIN customers USING(member_id) JOIN recipient_cust ON customer_id=recipient_id JOIN packages USING(package_id) JOIN sender_cust ON packages.package_id=sender_cust.package_id " +
-                "WHERE sender_id=?";
+                "WHERE sender_id=? ORDER BY packages.package_id";
         PreparedStatement pst = getInstance().getConnection().prepareStatement(query);
         pst.setInt(1, Customer.getCust_id());
         return pst.executeQuery();
@@ -295,6 +320,28 @@ public class DataBaseHandler {
             }
         }catch (SQLException e) {
             throw new RuntimeException(e);
+        }
+    }
+    public void delivered_package(int id) throws SQLException {
+        String query = "SELECT * FROM packages WHERE package_id="+id+" AND courier_id="+Courier.getCour_id()+" AND status=1";
+        PreparedStatement pst1 = getConnection().prepareStatement(query);
+        ResultSet res = pst1.executeQuery();
+        int i = 0;
+        while(res.next()){
+            i++;
+        }
+        if(i>0){
+            query = "UPDATE packages SET status=2 WHERE package_id=?";
+            pst1 = getConnection().prepareStatement(query);
+            pst1.setInt(1, id);
+
+        }
+        else{
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Доставка посылки");
+            alert.setHeaderText("Введен неверный id посылки");
+            alert.setContentText("Введите кооректный id");
+            alert.showAndWait();
         }
     }
 

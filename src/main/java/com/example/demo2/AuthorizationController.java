@@ -78,6 +78,25 @@ public class AuthorizationController {
                     stage.setScene(new Scene(root));
                     stage.show();
                 }
+                else if(User.getId()!=0 && User.getRole()==1){
+                    db.courier();
+                    enter.getScene().getWindow().hide();
+
+
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setLocation(getClass().getResource("courier_account.fxml"));
+                    fxmlLoader.setRoot(new Pane());
+
+                    try {
+                        fxmlLoader.load();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    Parent root = fxmlLoader.getRoot();
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(root));
+                    stage.show();
+                }
                 else{
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Вход ");
