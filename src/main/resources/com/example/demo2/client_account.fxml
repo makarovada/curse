@@ -5,6 +5,8 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -27,8 +29,37 @@
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="button_change_data" layoutX="14.0" layoutY="278.0" style="-fx-background-color: #f5f5f5; -fx-background-insets: #f5f5f5;" text="Изменить данные" textFill="DARKGREEN" />
-                        <Pane fx:id="data" layoutX="14.0" layoutY="14.0" prefHeight="233.0" prefWidth="404.0" />
                         <Button fx:id="button_send_package" layoutX="146.0" layoutY="278.0" style="-fx-background-color: #006400; -fx-background-insets: #006400;" text="Отправить посылку" textFill="WHITE" />
+                        <Label layoutX="22.0" layoutY="15.0" prefHeight="36.0" prefWidth="185.0" text="ФИО: " textAlignment="CENTER">
+                           <font>
+                              <Font name="Bodoni MT" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="22.0" layoutY="48.0" prefHeight="36.0" prefWidth="185.0" text="Телефон: " textAlignment="CENTER">
+                           <font>
+                              <Font name="Bodoni MT" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="22.0" layoutY="85.0" prefHeight="36.0" prefWidth="185.0" text="Адрес: " textAlignment="CENTER">
+                           <font>
+                              <Font name="Bodoni MT" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="name_field" layoutX="72.0" layoutY="15.0" prefHeight="36.0" prefWidth="418.0" text="-" textAlignment="CENTER">
+                           <font>
+                              <Font name="Bodoni MT" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="phone_field" layoutX="101.0" layoutY="48.0" prefHeight="36.0" prefWidth="418.0" text="-" textAlignment="CENTER">
+                           <font>
+                              <Font name="Bodoni MT" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="address_field" layoutX="79.0" layoutY="85.0" prefHeight="36.0" prefWidth="418.0" text="-" textAlignment="CENTER">
+                           <font>
+                              <Font name="Bodoni MT" size="16.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
             </content>
@@ -37,7 +68,15 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ListView fx:id="wait_packages" layoutX="-1.0" layoutY="-1.0" prefHeight="319.0" prefWidth="603.0" />
+                        <TableView fx:id="wait_packages" layoutX="-1.0" layoutY="-1.0" prefHeight="318.0" prefWidth="603.0">
+                          <columns>
+                            <TableColumn fx:id="id_column" prefWidth="52.80001676082611" text="id" />
+                            <TableColumn fx:id="weight_column" prefWidth="100.00000762939453" text="вес" />
+                              <TableColumn fx:id="urgency_column" prefWidth="100.800048828125" text="срочность" />
+                              <TableColumn fx:id="name_column" prefWidth="208.79998779296875" text="имя курьера" />
+                              <TableColumn fx:id="phone_column" prefWidth="137.59999389648442" text="номер курьера" />
+                          </columns>
+                        </TableView>
                      </children>
                   </AnchorPane>
             </content>
@@ -47,6 +86,15 @@
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <ListView layoutX="1.0" prefHeight="317.0" prefWidth="603.0" />
+                        <TableView fx:id="sent_packages" prefHeight="318.0" prefWidth="603.0">
+                          <columns>
+                            <TableColumn fx:id="id_column_1" prefWidth="57.599974036216736" text="id" />
+                            <TableColumn fx:id="weight_column_1" prefWidth="92.79999542236328" text="вес" />
+                              <TableColumn fx:id="urgency_column_1" prefWidth="108.00006103515625" text="Срочность" />
+                              <TableColumn fx:id="name_recipient_column" prefWidth="247.199951171875" text="Получатель" />
+                              <TableColumn fx:id="status_column" prefWidth="98.39993286132812" text="Доставлена" />
+                          </columns>
+                        </TableView>
                      </children>
                   </AnchorPane>
               </content>

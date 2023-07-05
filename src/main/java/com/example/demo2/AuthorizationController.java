@@ -2,14 +2,14 @@ package com.example.demo2;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -56,40 +56,38 @@ public class AuthorizationController {
             stage.show();
         });
         enter.setOnAction(actionEvent -> {
-            String query = "SELECT member_id, role FROM members WHERE login = ? AND password= ?";
             try {
-                ResultSet res = null;
                 DataBaseHandler db = DataBaseHandler.getInstance();
-                PreparedStatement pst = db.getConnection().prepareStatement(query);
-                        //db.getConnection().createStatement().executeQuery(query);
-                pst.setString(1, login_field.getText());
-                pst.setString(2, Integer.toString(password_field.getText().hashCode()));
-                res = pst.executeQuery();
-                while(res.next()){
-                    User.setId(res.getInt("member_id"));
-                    User.setRole(res.getInt("role"));
-                    System.out.println(User.getId());
+                db.authorization(login_field.getText(), Integer.toString(password_field.getText().hashCode()));
+                if(User.getId()!=0 && User.getRole()==2){
+                    db.customer();
+                    enter.getScene().getWindow().hide();
+
+
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setLocation(getClass().getResource("client_account.fxml"));
+                    fxmlLoader.setRoot(new Pane());
+
+                    try {
+                        fxmlLoader.load();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    Parent root = fxmlLoader.getRoot();
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(root));
+                    stage.show();
                 }
+                else{
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Вход ");
+                    alert.setHeaderText("Ошибка входа");
+                    alert.setContentText("Введены неверные логин или пароль");
+                    alert.showAndWait();
+                }
+
             } catch (SQLException | ClassNotFoundException e) {
                 throw new RuntimeException(e);
-            }
-            if(User.getId()!=0 && User.getRole()==2){
-                enter.getScene().getWindow().hide();
-
-
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("client_account.fxml"));
-                fxmlLoader.setRoot(new Pane());
-
-                try {
-                    fxmlLoader.load();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                Parent root = fxmlLoader.getRoot();
-                Stage stage = new Stage();
-                stage.setScene(new Scene(root));
-                stage.show();
             }
 
 
