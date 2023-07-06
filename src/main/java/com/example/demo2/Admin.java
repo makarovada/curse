@@ -1,14 +1,15 @@
 package com.example.demo2;
 
-public class Courier extends User{
-    private static int cour_id;
+public class Admin extends User{
+    private static int admin_id;
     private static String first_name;
     private static String second_name;
     private static String last_name;
     private static String phone;
     private static int dc_id;
+    private static String dc_name;
 
-    private Courier(){}
+    private Admin(){}
 
     public static String getFirst_name() {
         return first_name;
@@ -49,13 +50,17 @@ public class Courier extends User{
     public static int getDc_id() {
         return dc_id;
     }
-    public static void setCour_id(int cour_id1) {
-        cour_id = cour_id1;
+    public static void setAdmin_id(int admin_id1) {
+        admin_id = admin_id1;
     }
-    public static int getCour_id() {
-        return cour_id;
+    public static int getAdmin_id() {
+        return admin_id;
     }
-
+    public static void setDc_name(String dc_name1) {
+        dc_name = dc_name1;
+    }
+    public static String getDc_name() {
+        return dc_name;
+    }
 
 }
-

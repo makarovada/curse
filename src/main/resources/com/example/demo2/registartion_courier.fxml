@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="603.0" type="Pane" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo2.CourierRegistrationController">
+   <children>
+      <Pane prefHeight="54.0" prefWidth="603.0" style="-fx-background-color: #006400;">
+         <children>
+            <Label layoutX="211.0" layoutY="8.0" prefHeight="36.0" prefWidth="185.0" text="Центр доставки &quot;Стэк&quot;" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bodoni MT" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <TextField fx:id="login_field" layoutX="30.0" layoutY="217.0" prefHeight="36.0" prefWidth="262.0" promptText="Логин" />
+      <Label layoutX="213.0" layoutY="60.0" prefHeight="36.0" prefWidth="178.0" text="Регистрация курьера" textAlignment="JUSTIFY" wrapText="true">
+         <font>
+            <Font name="Bodoni MT Black" size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="registration_button" layoutX="222.0" layoutY="339.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="161.0" style="-fx-background-color: #006400;" text="Зарегистрировать" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Arial Narrow" size="14.0" />
+         </font>
+      </Button>
+      <PasswordField fx:id="password_field" layoutX="309.0" layoutY="217.0" prefHeight="36.0" prefWidth="262.0" promptText="Пароль" />
+      <TextField fx:id="first_name_field" layoutX="30.0" layoutY="110.0" prefHeight="36.0" prefWidth="262.0" promptText="Фамилия" />
+      <TextField fx:id="second_name_field" layoutX="309.0" layoutY="110.0" prefHeight="36.0" prefWidth="262.0" promptText="Имя" />
+      <TextField fx:id="last_name_field" layoutX="30.0" layoutY="166.0" prefHeight="36.0" prefWidth="262.0" promptText="Отчество" />
+      <TextField fx:id="phone_field" layoutX="309.0" layoutY="166.0" prefHeight="36.0" prefWidth="262.0" promptText="Телефон" />
+      <TextField fx:id="dc_ld" layoutX="227.0" layoutY="271.0" prefHeight="36.0" prefWidth="149.0" promptText="Центр доставки" />
+      <Button fx:id="back" layoutX="505.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Назад" textFill="DARKGREEN" />
+   </children>
+</fx:root>

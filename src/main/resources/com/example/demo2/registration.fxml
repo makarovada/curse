@@ -35,5 +35,6 @@
       <TextField fx:id="last_name_field" layoutX="30.0" layoutY="164.0" prefHeight="36.0" prefWidth="262.0" promptText="Отчество" />
       <TextField fx:id="phone_field" layoutX="309.0" layoutY="164.0" prefHeight="36.0" prefWidth="262.0" promptText="Телефон" />
       <TextField fx:id="address_field" layoutX="31.0" layoutY="221.0" prefHeight="36.0" prefWidth="541.0" promptText="Адрес" />
+      <Button fx:id="back" layoutX="505.0" layoutY="13.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Назад" textFill="DARKGREEN" />
    </children>
 </fx:root>

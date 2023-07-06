@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="603.0" type="Pane" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo2.AdminAccountController">
+   <children>
+      <Pane prefHeight="54.0" prefWidth="603.0" style="-fx-background-color: #006400;">
+         <children>
+            <Label layoutX="211.0" layoutY="8.0" prefHeight="36.0" prefWidth="185.0" text="Центр доставки &quot;Стэк&quot;" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bodoni MT" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <TabPane layoutY="54.0" prefHeight="346.0" prefWidth="603.0" tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <Tab text="Личный кабинет">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="22.0" layoutY="15.0" prefHeight="36.0" prefWidth="185.0" text="ФИО: " textAlignment="CENTER">
+                           <font>
+                              <Font name="Bodoni MT" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="22.0" layoutY="48.0" prefHeight="36.0" prefWidth="185.0" text="Телефон: " textAlignment="CENTER">
+                           <font>
+                              <Font name="Bodoni MT" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="22.0" layoutY="85.0" prefHeight="36.0" prefWidth="185.0" text="Центр доставки:" textAlignment="CENTER">
+                           <font>
+                              <Font name="Bodoni MT" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="name_field" layoutX="72.0" layoutY="15.0" prefHeight="36.0" prefWidth="418.0" text="-" textAlignment="CENTER">
+                           <font>
+                              <Font name="Bodoni MT" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="phone_field" layoutX="101.0" layoutY="48.0" prefHeight="36.0" prefWidth="418.0" text="-" textAlignment="CENTER">
+                           <font>
+                              <Font name="Bodoni MT" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="address_field" layoutX="150.0" layoutY="85.0" prefHeight="36.0" prefWidth="418.0" text="-" textAlignment="CENTER">
+                           <font>
+                              <Font name="Bodoni MT" size="16.0" />
+                           </font>
+                        </Label>
+                        <PasswordField fx:id="password_field" layoutX="41.0" layoutY="214.0" promptText="Пароль" />
+                        <Button fx:id="create_dc_button" layoutX="229.0" layoutY="214.0" mnemonicParsing="false" style="-fx-background-color: #006400;" text="Создать центр доставки" textFill="WHITE" />
+                        <Button fx:id="create_admin_button" layoutX="410.0" layoutY="214.0" mnemonicParsing="false" style="-fx-background-color: #006400;" text="Создать администратора" textFill="WHITE" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Отпправленные посылки">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="sent_packages" layoutX="1.0" layoutY="-1.0" prefHeight="266.0" prefWidth="603.0">
+                           <columns>
+                              <TableColumn fx:id="sent_id_column" prefWidth="33.599974036216736" text="id" />
+                              <TableColumn fx:id="sent_weight_column" prefWidth="61.60003662109375" text="вес" />
+                              <TableColumn fx:id="sent_urgency_column" prefWidth="69.59998321533203" text="срочность" />
+                              <TableColumn fx:id="sent_name_column" prefWidth="148.00006103515625" text="имя" />
+                              <TableColumn fx:id="sent_phone_column" prefWidth="111.2000732421875" text="номер" />
+                              <TableColumn fx:id="dc_recipient_column" prefWidth="107.20010375976562" text="центр отправки" />
+                              <TableColumn fx:id="status_column1" prefWidth="68.00004882812505" text="статус" />
+                           </columns>
+                        </TableView>
+                        <Text layoutX="37.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите id посылки:" />
+                        <TextField fx:id="id_package_field1" layoutX="165.0" layoutY="276.0" />
+                        <Button fx:id="status_package_button1" layoutX="351.0" layoutY="276.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="179.0" style="-fx-background-color: #006400;" text="Посылка отправлена" textFill="WHITE" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Ожидаемые посылки">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="wait_packages" prefHeight="266.0" prefWidth="603.0">
+                           <columns>
+                              <TableColumn fx:id="id_column1" prefWidth="33.599974036216736" text="id" />
+                              <TableColumn fx:id="weight_column1" prefWidth="61.60003662109375" text="вес" />
+                              <TableColumn fx:id="urgency_column1" prefWidth="69.59998321533203" text="срочность" />
+                              <TableColumn fx:id="name_column1" prefWidth="148.00006103515625" text="имя" />
+                              <TableColumn fx:id="address_column1" prefWidth="148.0" text="адрес" />
+                              <TableColumn fx:id="courier_id_column" prefWidth="76.00003051757812" text="id курьера" />
+                              <TableColumn fx:id="status_column2" prefWidth="63.200000000000045" text="статус" />
+                           </columns>
+                        </TableView>
+                        <Button fx:id="status_package_button2" layoutX="351.0" layoutY="279.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="179.0" style="-fx-background-color: #006400;" text="Посылка получена" textFill="WHITE" />
+                        <Text layoutX="37.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите id посылки:" />
+                        <TextField fx:id="id_package_field2" layoutX="161.0" layoutY="280.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Курьеры">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="couriers" prefHeight="267.0" prefWidth="603.0">
+                          <columns>
+                              <TableColumn fx:id="id_column_courier" prefWidth="75.0" text="id" />
+                            <TableColumn fx:id="fio_column_courier" prefWidth="347.19995880126953" text="фио" />
+                            <TableColumn fx:id="phone_column_courier" minWidth="0.0" prefWidth="180.80001831054688" text="номер" />
+                          </columns>
+                        </TableView>
+                        <Button fx:id="registration_courier" layoutX="409.0" layoutY="277.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="179.0" style="-fx-background-color: #006400;" text="Зарегистрировать курьера" textFill="WHITE" />
+                        <Button fx:id="chamge_courier_button" layoutX="203.0" layoutY="277.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="179.0" style="-fx-background-color: #006400;" text="Изменить курьера" textFill="WHITE" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Клиенты">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="customers" prefHeight="267.0" prefWidth="603.0">
+                          <columns>
+                              <TableColumn fx:id="id_column_customer" prefWidth="51.200010657310486" text="id" />
+                            <TableColumn fx:id="fio_column_customer" prefWidth="182.39997100830078" text="фио" />
+                            <TableColumn fx:id="phone_column_customer" prefWidth="108.00006103515625" text="номер" />
+                              <TableColumn fx:id="address_column_customer" prefWidth="183.19998168945312" text="адрес" />
+                              <TableColumn fx:id="dc_id_column_customer" prefWidth="75.99993896484375" text="ЦД" />
+                          </columns>
+                        </TableView>
+                        <TextField fx:id="id_customer_field" layoutX="171.0" layoutY="279.0" />
+                        <Text layoutX="40.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите id клиента:" />
+                        <Button fx:id="status_package_button13" layoutX="366.0" layoutY="278.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="179.0" style="-fx-background-color: #006400;" text="Прикрепить клиента" textFill="WHITE" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </children>
+</fx:root>

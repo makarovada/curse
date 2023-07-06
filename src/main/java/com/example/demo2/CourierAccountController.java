@@ -23,7 +23,7 @@ public class CourierAccountController {
     private TableColumn<Package_courier, String> address_column;
 
     @FXML
-    private Label address_field;
+    private Label dc_field;
 
     @FXML
     private TableColumn<Package_courier, Integer> id_column;
@@ -56,9 +56,10 @@ public class CourierAccountController {
 
     @FXML
     void initialize() throws SQLException, ClassNotFoundException {
-        name_field.setText(Customer.getFirst_name()+" "+Customer.getSecond_name()+" "+Customer.getLast_name());
-        phone_field.setText(Customer.getPhone());
-        address_field.setText(Customer.getAddress());
+        name_field.setText(Courier.getFirst_name()+" "+Courier.getSecond_name()+" "+Courier.getLast_name());
+        phone_field.setText(Courier.getPhone());
+        String s = String.valueOf(Courier.getDc_id());
+        dc_field.setText(s);
 
         DataBaseHandler db = DataBaseHandler.getInstance();
 
@@ -83,6 +84,7 @@ public class CourierAccountController {
             try {
                 DataBaseHandler bd = DataBaseHandler.getInstance();
                 bd.delivered_package(Integer.parseInt(id_package_field.getText()));
+
                 ResultSet res1 = db.courier_account_table();
 
                 ObservableList<Package_courier> w1 = FXCollections.observableArrayList();
